@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- Link to font awesome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <!-- This form contains the user input box and the submit button -->
+    <div class="form">
+        <!-- Text input for user to enter a city or country -->
+        <input type="text" placeholder="Enter a city or country..." class="input"> 
+
+        <!-- Button to submit the input and get weather information -->
+        <button class="button"> <i class="fa fa-search" aria-hidden="true"></i> </button> 
+        <button class="location-btn"> <i class="fa fa-map-marker" aria-hidden="true"></i> Your Location </button> 
+    </div>
+
+    
+    <!-- This section will display the details of the weather information for the selected city or country -->
+    <section class="details"> </section>
+
+
+    <!-- This section will display more details about the weather information for the selected city or country -->
+    <section class="more-details"> 
+        
+    </section>
+
+
+    <section class="forecast-cont hide">
+       <!-- Heading for the 24 hour forecast section -->
+        <h2> Today's 24 Hour Forecast </h2> 
+ 
+         <!-- This div will display the weather forecast for the next 24 hours -->
+        <div class="forecast"> </div>
+    </section>
+
+    <footer>
+        &copy; Cyril 2023
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="main.js"></script>
+</body>
+</html>
