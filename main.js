@@ -1,12 +1,15 @@
+//get the user input
 let userInput = document.querySelector('.input')
 
 async function getWeather(){
     try {
+        //fetching the data and converting from its default json format to object
         const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=005ed55e80af47f1bf2125433232603&q=${userInput.value}`)
     
         const data = await response.json()
         
 
+        //the weather object
         const weather = {
             city: data.location.name,
             country: data.location.country,
@@ -23,7 +26,7 @@ async function getWeather(){
             //local time
             localTime: function(){
                 const date = new Date(data.location.localtime)
-                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+                const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
                 const dateString = date.toLocaleString('en-US', options);
 
                 return dateString
@@ -37,13 +40,13 @@ async function getWeather(){
                 return forecastDate_dateString
             }
          }
+         //call the displayweather function
          displayWeather(weather)
 
          //reset the user input field
          userInput.value = ''
     
         console.log(data)
-        console.log(data.forecast.forecastday[0].hour[0].time)
     } 
     //catch area to capture errors
     catch (error) {
@@ -61,47 +64,9 @@ const button = document.querySelector('.button')
     button.addEventListener('click', getWeather)
 
 
-
-//This function gets the current user location and gets the weather info
-function getCurrentLocation(){
-    //if the user's browser supports geolocation
-    if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(function(position){
-           
-            const latitude = position.coords.latitude
-            const longitude = position.coords.longitude
-
-            //async function to fetch the exact location based on coords
-            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)
-                .then(response => {
-                    return response.json()
-                })
-                .then(data => {
-                    const city = data.address.city; 
-                    //update userinput to current city
-                    userInput.value = city;
-                    //get the weather based on the current city
-                    getWeather()
-
-                    alert(`You're currently in the city of ${city}`)
-                })
-        })
-    }
-    //if the users browser does not support geolocation
-    else{
-        alert('Your browser does not support geolocation')
-    }
-}//END OF GEOLOCATION FUNCTION
-
-//This button calls the geolocation function
-const locationBtn = document.querySelector('.location-btn')
-    locationBtn.addEventListener('click', getCurrentLocation)
-
-
-
 // This function displays the weather info to the homepage
 function displayWeather(weather){
-    //Weather informmation of the first section:details
+        //Weather informmation of the first section:details
         const details = document.querySelector('.details')
         
         details.innerHTML = `
@@ -147,12 +112,11 @@ function displayWeather(weather){
             moreDetails.style.padding = '.5em'
 
         
-      //Weather informmation for the third section:forecast
+        //Weather informmation for the third section:forecast
         const forecast = document.querySelector('.forecast')
         
         //this array contains the forecast information
         const arr = weather.array
-        console.log(arr)
 
         forecast.innerHTML = ''
 
@@ -175,7 +139,3 @@ function displayWeather(weather){
             forecastContainer.classList.remove('hide') 
 
 }//END OF DISPLAY FUNCTION
-
-
-
-
