@@ -7,5 +7,5 @@ In this project, I explored the Weatherapi API to create a weather app with the 
 3. Chance of rainful, precipitation, humidity and also a 24 hour forecast is also available
 
 # Check out the live link here: 
-
+https://iamunike.github.io/Weather-App/
 
