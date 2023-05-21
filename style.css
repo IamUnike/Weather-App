@@ -18,7 +18,7 @@ body {
     font-size: 14px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
 }
 
@@ -50,14 +50,15 @@ body {
 }
 
 /* Styling for the submit button */
-.button, .location-btn {
-    padding: .5em;
-    border: 2px solid black;
+.button{
+    padding: .5em 1em;
+    border: 1px solid black;
     outline: none;
     background-color: white;
     border-radius: .4em;
     cursor: pointer;
 }
+
 
 .fa{
     font-size: 1.1em;
